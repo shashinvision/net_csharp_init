@@ -1,4 +1,4 @@
-### Example Project Setup
+### Example Project Setup with DOTNET 8.03
 
 ```bash
 
@@ -26,99 +26,173 @@ dotnet watch
 ```
 ### Commands
 
-**dotnet new**
 - Create a new .NET project.
+```
+otnet new
+```
 
-**dotnet new list**
-- lis a new command options, the Short Name column have a templates to use, example: dotnet new webapi -controllers -n API 
-**dotnet restore**
+
+### Commands
+
+- Create a new .NET project.
+```
+dotnet new
+```
+
+- List new command options. The Short Name column has templates to use. Example:
+```
+dotnet new webapi -controllers -n API
+```
+
 - Restore dependencies specified in the project.
+```
+dotnet restore
+```
 
-**dotnet build**
 - Build a project and all of its dependencies.
+```
+dotnet build
+```
 
-**dotnet run**
 - Build and run a project.
+```
+dotnet run
+```
 
-**dotnet test**
-- Run unit tests using a test runner specified in project.
+- Run unit tests using a test runner specified in the project.
+```
+dotnet test
+```
 
-**dotnet ef**
 - Entity Framework Core command-line tools.
+```
+dotnet ef
+```
 
-**dotnet tool**
 - .NET Core global tools command-line.
+```
+dotnet tool
+```
 
-**dotnet clean**
 - Clean the output of a project.
+```
+dotnet clean
+```
 
-**dotnet pack**
 - Create a NuGet package.
+```
+dotnet pack
+```
 
-**dotnet publish**
 - Publish a .NET project.
+```
+dotnet publish
+```
 
-**dotnet migrate**
 - Migrate a project from project.json to csproj.
+```
+dotnet migrate
+```
 
-**dotnet sln**
 - Modify solution (SLN) files.
+```
+dotnet sln
+```
 
-**dotnet nuget**
 - NuGet command-line.
+```
+dotnet nuget
+```
 
-**dotnet new --list**
+
 - List all available project templates.
+```
+dotnet new --list
+```
 
-**dotnet help**
 - Display help information for a command.
+```
+dotnet help
+```
 
-**dotnet --info**
 - Display information about the installed .NET Core SDK.
+```
+dotnet --info
+```
 
-**dotnet dev-certs https**
 - Create/Recreate certs.
+```
+dotnet dev-certs https
+```
 
-**dotnet dev-certs https --trust**
 - Trust certs.
+```
+dotnet dev-certs https --trust
+```
 
-**dotnet dev-certs https --clean**
 - Clean certs.
+```
+dotnet dev-certs https --clean
+```
 
+- Entity Framework Core .NET Command-line Tools 8.0.3, with dotnet-ef tool.
+```
+dotnet tool list -g
+```
 
-**dotnet tool list -g**
-- Entity Framework Core .NET Command-line Tools 8.0.3, with dotnet-ef tool 
+- Install dotnet-ef. Ensure it is the same version as your dotnet.
+```
+dotnet tool install --global dotnet-ef --version 8.0.3
+```
+- Use [NuGet](https://www.nuget.org/).
 
-**ddotnet tool install --global dotnet-ef --version 8.0.3**
-- Install dotnet-ef, in this case need to be the same version of your dotnet, https://www.nuget.org/packages/dotnet-ef/8.0.3
-- use https://www.nuget.org/
+- To view a help page of migrations.
+```
+dotnet ef migrations -h
+```
 
-**dotnet ef migrations -h**
-- To view a hep page of migrations  
-**dotnet ef**
-- To use 
+- To use.
+```
+dotnet ef
+```
 
-**dotnet ef migrations add InitialCreate -o Data/Migrations**
-- To create a Migration, remember use, **cd API** before
+- To create a Migration, remember to use `cd API` before.
+```
+dotnet ef migrations add InitialCreate -o Data/Migrations
+```
 
-**dotnet ef database -h**
-- To se the help options on data bases
+- To see the help options on databases.
+```
+dotnet ef database -h
+```
 
-**dotnet ef database update**
-- to activate migrations
+- To activate migrations.
+```
+dotnet ef database update
+```
 
+- To uninstall dotnet-ef.
+```
+dotnet tool uninstall --global dotnet-ef
+```
 
-**dotnet tool uninstall --global dotnet-ef**
-- To uninstall it 
-
-**dotnet new gitignore**
-- To create a .gitignore template file
-
+- To create a .gitignore template file.
+```
+dotnet new gitignore
+```
 
 ### Help Examples
-**dotnet -h**
+- General help.
+```
+dotnet -h
+```
 
-**dotnet new webapi -h**
+- Help for webapi.
+```
+dotnet new webapi -h
+```
 
-**dotnet new webapi -controllers -h**
-- Help of subcommand webapi, to use example: dotnet new webapi -controllers -n API 
+- Help for subcommand webapi. Example usage: `dotnet new webapi -controllers -n API`
+```
+dotnet new webapi -controllers -h
+```
