@@ -111,6 +111,9 @@ dotnet watch
 **dotnet tool uninstall --global dotnet-ef**
 - To uninstall it 
 
+**dotnet new gitignore**
+- To create a .gitignore template file
+
 
 ### Help Examples
 **dotnet -h**
