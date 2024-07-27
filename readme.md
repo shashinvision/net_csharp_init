@@ -85,6 +85,33 @@ dotnet watch
 **dotnet dev-certs https --clean**
 - Clean certs.
 
+
+**dotnet tool list -g**
+- Entity Framework Core .NET Command-line Tools 8.0.3, with dotnet-ef tool 
+
+**ddotnet tool install --global dotnet-ef --version 8.0.3**
+- Install dotnet-ef, in this case need to be the same version of your dotnet, https://www.nuget.org/packages/dotnet-ef/8.0.3
+- use https://www.nuget.org/
+
+**dotnet ef migrations -h**
+- To view a hep page of migrations  
+**dotnet ef**
+- To use 
+
+**dotnet ef migrations add InitialCreate -o Data/Migrations**
+- To create a Migration, remember use, **cd API** before
+
+**dotnet ef database -h**
+- To se the help options on data bases
+
+**dotnet ef database update**
+- to activate migrations
+
+
+**dotnet tool uninstall --global dotnet-ef**
+- To uninstall it 
+
+
 ### Help Examples
 **dotnet -h**
 
