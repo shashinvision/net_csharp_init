@@ -27,7 +27,7 @@ dotnet watch
 ### Commands
 
 - Create a new .NET project.
-```
+```bash
 otnet new
 ```
 
@@ -35,164 +35,218 @@ otnet new
 ### Commands
 
 - Create a new .NET project.
-```
+```bash
 dotnet new
 ```
 
 - List new command options. The Short Name column has templates to use. Example:
-```
+```bash
 dotnet new webapi -controllers -n API
 ```
 
 - Restore dependencies specified in the project.
-```
+```bash
 dotnet restore
 ```
 
 - Build a project and all of its dependencies.
-```
+```bash
 dotnet build
 ```
 
 - Build and run a project.
-```
+```bash
 dotnet run
 ```
 
 - Run unit tests using a test runner specified in the project.
-```
+```bash
 dotnet test
 ```
 
 - Entity Framework Core command-line tools.
-```
+```bash
 dotnet ef
 ```
 
 - .NET Core global tools command-line.
-```
+```bash
 dotnet tool
 ```
 
 - Clean the output of a project.
-```
+```bash
 dotnet clean
 ```
 
 - Create a NuGet package.
-```
+```bash
 dotnet pack
 ```
 
 - Publish a .NET project.
-```
+```bash
 dotnet publish
 ```
 
 - Migrate a project from project.json to csproj.
-```
+```bash
 dotnet migrate
 ```
 
 - Modify solution (SLN) files.
-```
+```bash
 dotnet sln
 ```
 
 - NuGet command-line.
-```
+```bash
 dotnet nuget
 ```
 
 
 - List all available project templates.
-```
+```bash
 dotnet new --list
 ```
 
 - Display help information for a command.
-```
+```bash
 dotnet help
 ```
 
 - Display information about the installed .NET Core SDK.
-```
+```bash
 dotnet --info
 ```
 
 - Create/Recreate certs.
-```
+```bash
 dotnet dev-certs https
 ```
 
 - Trust certs.
-```
+```bash
 dotnet dev-certs https --trust
 ```
 
 - Clean certs.
-```
+```bash
 dotnet dev-certs https --clean
 ```
 
 - Entity Framework Core .NET Command-line Tools 8.0.3, with dotnet-ef tool.
-```
+```bash
 dotnet tool list -g
 ```
 
 - Install dotnet-ef. Ensure it is the same version as your dotnet.
-```
+```bash
 dotnet tool install --global dotnet-ef --version 8.0.3
 ```
 - Use [NuGet](https://www.nuget.org/).
 
 - To view a help page of migrations.
-```
+```bash
 dotnet ef migrations -h
 ```
 
 - To use.
-```
+```bash
 dotnet ef
 ```
 
 - To create a Migration, remember to use `cd API` before.
-```
+```bash
 dotnet ef migrations add InitialCreate -o Data/Migrations
 ```
 
 - To see the help options on databases.
-```
+```bash
 dotnet ef database -h
 ```
 
 - To activate migrations.
-```
+```bash
 dotnet ef database update
 ```
 
 - To uninstall dotnet-ef.
-```
+```bash
 dotnet tool uninstall --global dotnet-ef
 ```
 
 - To create a .gitignore template file.
-```
+```bash
 dotnet new gitignore
 ```
 
 ### Help Examples
 - General help.
-```
+```bash
 dotnet -h
 ```
 
 - Help for webapi.
-```
+```bash
 dotnet new webapi -h
 ```
 
 - Help for subcommand webapi. Example usage: `dotnet new webapi -controllers -n API`
-```
+```bash
 dotnet new webapi -controllers -h
+```
+
+## Angular CLI 
+```bash
+npm install -g @angular/cli
+```
+- For specific verion use
+```bash
+npm install -g @angular/cli@17
+```
+- To use Angular CLI, just need to check the version
+```bash
+ng version
+```
+- New Angular project, in this case we use SPA not SSR, with CSS 
+```bash 
+ng new client
+```
+- To use Serve
+```bash
+ng serve
+```
+
+## '[optional]' Use mkcert to create  locally-trusted certificates on boostrap project **https://github.com/FiloSottile/mkcert** 
+- on Mac '(use the repository readme for more instructions)'
+```bash
+brew install mkcert
+```
+```bash
+mkcert -install
+```
+- In the client project (Angular) create a ssl folder
+```bash
+mkdir ssl
+```
+```bash
+cd ssl
+```
+```bash
+mkcert localhost
+```
+- next you need to use in the local system or development serve, example here is in angular.js amnd next: 
+- 
+```json
+{
+  "serve": {
+    "options": {
+      "ssl": true,
+      "sslCert": "./ssl/localhost.pem",
+      "sslKey": "./ssl/localhost-key.pem"
+    }
+  }
+  ...// rest of json
+}
 ```
