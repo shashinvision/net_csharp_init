@@ -156,9 +156,17 @@ dotnet ef migrations -h
 dotnet ef
 ```
 
-- To create a Migration, remember to use `cd API` before.
+- To create a InitialCreate Migration and Path, remember to use `cd API` before.
 ```bash
 dotnet ef migrations add InitialCreate -o Data/Migrations
+```
+- To Next migrations just need add the name  
+```bash
+dotnet ef migrations add UserEntityUpdated
+```
+- To undo this action
+```bash
+dotnet ef migrations remove
 ```
 
 - To see the help options on databases.
