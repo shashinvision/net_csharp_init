@@ -3,11 +3,11 @@ using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API;
+namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")] // /api/users
-public class UsersController(DataContext context) : ControllerBase // Using primary constructor here to use _context, is to much clean code
+// [ApiController]
+// [Route("api/[controller]")] // /api/users
+public class UsersController(DataContext context) : BaseApiController // extend of BaseApiController for reutilizable code
 {
     private readonly DataContext _context = context; // When i use private attributes i have to use _
 
