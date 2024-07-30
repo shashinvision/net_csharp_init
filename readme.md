@@ -258,3 +258,22 @@ mkcert localhost
   ...// rest of json
 }
 ```
+
+
+- Create commands help ng
+```bash
+ng generate --help
+```
+
+- create component help
+```bash
+ng generate component --help
+```
+- See how a Component nav could will create but not create at all
+```bash
+ng generate component nav --dry-run
+```
+- Create a Component nav using --skip-tests option
+```bash
+ng generate component nav --skip-tests --dry-run
+```
