@@ -28,7 +28,7 @@ dotnet watch
 
 - Create a new .NET project.
 ```bash
-otnet new
+dotnet new
 ```
 
 

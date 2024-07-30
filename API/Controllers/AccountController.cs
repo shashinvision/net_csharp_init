@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-public class AccountController(DataContext context) : BaseApiController
+public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
 {
     [HttpPost("register")] //acount/register
-    public async Task<ActionResult<AppUser>> Register(RegisterDto registerDto){
+    public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto){
 
-        if (await UserExists(registerDto.UserName)) return BadRequest("Username is taken");
+        if (await UserExists(registerDto.UserName)) return BadRequest("UserName is taken");
 
         using var hmac = new HMACSHA512();
 
@@ -26,11 +26,14 @@ public class AccountController(DataContext context) : BaseApiController
 
         context.Users.Add(user);
         await context.SaveChangesAsync();
-        return user;
+        return new UserDto{
+            UserName = user.UserName,
+            Token = tokenService.CreateToken(user)
+        };
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<AppUser>> Login(LoginDto loginDto){
+    public async Task<ActionResult<UserDto>> Login(LoginDto loginDto){
         var user = await context.Users.FirstOrDefaultAsync(User => User.UserName.ToLower() == loginDto.UserName.ToLower());
 
         if (user == null) return Unauthorized("Invalid username");
@@ -41,7 +44,10 @@ public class AccountController(DataContext context) : BaseApiController
             if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
         }
 
-        return user;
+        return new UserDto{
+            UserName = user.UserName,
+            Token = tokenService.CreateToken(user)
+        };
         
     }
 

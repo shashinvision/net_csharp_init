@@ -1,3 +1,4 @@
+using API;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// My personal database connection to use SQLite
+// My personal database connection to use SQLite Service 
 builder.Services.AddDbContext<DataContext>(opt =>{
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
@@ -18,6 +19,8 @@ builder.Services.AddSwaggerGen();
 
 // Custom Cors policy
 builder.Services.AddCors();
+
+builder.Services.AddScoped<ITokenService, TokenService>(); // I Just need <TokenService> but is more declarative use <ITokenService, TokenService>
 
 var app = builder.Build();
 
