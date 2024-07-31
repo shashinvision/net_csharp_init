@@ -14,7 +14,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 })
 export class NavComponent {
   accountService = inject(AccountService) // I use the inject to inject the service because I need it in the constructor.
-  model: any = {}
+  model: any = {} // This model apper in the form .html and i pass with the input data
 
   login() {
     this.accountService.login(this.model).subscribe({
