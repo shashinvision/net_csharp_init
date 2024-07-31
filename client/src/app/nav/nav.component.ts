@@ -3,12 +3,13 @@ import { AccountService } from './../_services/account.service';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [FormsModule, NgIf, BsDropdownModule],
+  imports: [FormsModule, NgIf, BsDropdownModule, RouterLink],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
