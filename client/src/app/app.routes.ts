@@ -1,3 +1,4 @@
+import { authGuard } from './_guards/auth.guard';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -7,9 +8,20 @@ import { MessagesComponent } from './messages/messages.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'members', component: MemberListComponent},
-  {path: 'member/:id', component: MemberDetailComponent},
-  {path: 'lists', component: ListsComponent},
-  {path: 'messages', component: MessagesComponent},
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [authGuard],
+    children: [
+      {path: 'members', component: MemberListComponent, canActivate: [authGuard]},
+      {path: 'member/:id', component: MemberDetailComponent},
+      {path: 'lists', component: ListsComponent},
+      {path: 'messages', component: MessagesComponent},
+    ]
+  },
+  // {path: 'members', component: MemberListComponent, canActivate: [authGuard]},
+  // {path: 'member/:id', component: MemberDetailComponent},
+  // {path: 'lists', component: ListsComponent},
+  // {path: 'messages', component: MessagesComponent},
   {path: '**', component: HomeComponent, pathMatch: 'full'},
 ];

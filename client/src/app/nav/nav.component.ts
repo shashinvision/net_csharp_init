@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class NavComponent {
   accountService = inject(AccountService) // I use the inject to inject the service because I need it in the constructor.
   private router = inject(Router)
+  private toastr = inject(ToastrService)
 
   model: any = {} // This model apper in the form .html and i pass with the input data
 
@@ -24,7 +26,7 @@ export class NavComponent {
       next: () => {
         void this.router.navigateByUrl('/members'); // In this case we have a alert in the Angular Server, this is because we need to use void when we don't have a return
       },
-      error: error => console.log(error)
+      error: error => this.toastr.error(error.error)
     })
   }
 
