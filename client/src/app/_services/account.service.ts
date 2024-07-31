@@ -29,4 +29,16 @@ export class AccountService {
     localStorage.removeItem('user');
     this.currentUser.set(null);
   }
+
+  register(model: any){
+    return this.http.post<User>(this.baseUrl + 'account/register', model).pipe( // with pipe i use observable Object
+      map(user =>{
+        if(user){
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUser.set(user);
+        }
+        return user;
+      })
+    )
+  }
 }
