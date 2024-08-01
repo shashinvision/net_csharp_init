@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgIf, TitleCasePipe } from '@angular/common';
 import { AccountService } from './../_services/account.service';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [FormsModule, NgIf, BsDropdownModule, RouterLink, RouterLinkActive],
+  imports: [FormsModule, NgIf, BsDropdownModule, RouterLink, RouterLinkActive, TitleCasePipe],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -20,7 +20,9 @@ export class NavComponent {
   private toastr = inject(ToastrService)
 
   model: any = {} // This model apper in the form .html and i pass with the input data
-
+  // ngOnInit() {
+  //   console.log('Current User:', this.accountService.currentUser());
+  // }
   login() {
     this.accountService.login(this.model).subscribe({
       next: () => {

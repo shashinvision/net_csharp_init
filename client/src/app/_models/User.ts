@@ -1,4 +1,4 @@
 export interface User {
-  username: string; // if i need to be optional username?: string;
-  toke: string;
+  userName: string; // if i need to be optional username?: string;
+  token: string;
 }

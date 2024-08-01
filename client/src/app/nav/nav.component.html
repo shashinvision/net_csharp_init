@@ -36,7 +36,7 @@
     <div class="btn-group" dropdown>
       <button id="button-basic" dropdownToggle type="button" class="btn btn-success dropdown-toggle"
         aria-controls="dropdown-basic">
-        Wellcome user <span class="caret"></span>
+        Welcome {{ accountService.currentUser()?.userName | titlecase }} <span class="caret"></span>
       </button>
       <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
         <li role="menuitem"><a class="dropdown-item">Edit Profile</a></li>
