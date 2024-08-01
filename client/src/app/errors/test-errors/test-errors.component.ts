@@ -16,28 +16,28 @@ export class TestErrorsComponent {
   get400Error() {
     this.http.get(this.baseUrl + 'buggy/bad-request').subscribe({
       next: response => console.log(response),
-      error: error => console.error(error)
+      error: error => console.log(error)
     });
   }
 
   get401Error() {
     this.http.get(this.baseUrl + 'buggy/auth').subscribe({
       next: response => console.log(response),
-      error: error => console.error(error)
+      error: error => console.log(error)
     });
   }
 
   get404Error() {
     this.http.get(this.baseUrl + 'buggy/not-found').subscribe({
       next: response => console.log(response),
-      error: error => console.error(error)
+      error: error => console.log(error)
     });
   }
 
   get500Error() {
     this.http.get(this.baseUrl + 'buggy/server-error').subscribe({
       next: response => console.log(response),
-      error: error => console.error(error)
+      error: error => console.log(error)
     });
   }
 
@@ -47,7 +47,7 @@ export class TestErrorsComponent {
       "password": ""
     }).subscribe({
       next: response => console.log(response),
-      error: error => console.error(error)
+      error: error => console.log(error)
     });
   }
 

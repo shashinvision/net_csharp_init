@@ -20,13 +20,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Use custom Cors for use with Angular
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 app.UseAuthentication(); // From AddAuthentication using JwtBearerDefaults
 app.UseAuthorization();
 
-
 app.UseMiddleware<ExceptionMiddleware>();
-// Use custom Cors for use with Angular
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
 app.MapControllers();
 

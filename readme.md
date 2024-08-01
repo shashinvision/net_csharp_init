@@ -259,6 +259,10 @@ mkcert localhost
 }
 ```
 
+- Interceptor 
+```bash
+ng g interceptor [name]
+```
 
 - Create commands help ng
 ```bash
