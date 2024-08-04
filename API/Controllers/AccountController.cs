@@ -3,6 +3,7 @@ using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,21 +16,23 @@ public class AccountController(DataContext context, ITokenService tokenService) 
 
         if (await UserExists(registerDto.UserName)) return BadRequest("UserName is taken");
 
-        using var hmac = new HMACSHA512();
+        return Ok();
+        // TODO: remove this commetns when all entities are created, this ok above is temporal
+        // using var hmac = new HMACSHA512();
 
-        var user = new AppUser
-        {
-            UserName = registerDto.UserName.ToLower(),
-            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            PasswordSalt = hmac.Key
-        };
+        // var user = new AppUser
+        // {
+        //     UserName = registerDto.UserName.ToLower(),
+        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        //     PasswordSalt = hmac.Key
+        // };
 
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
-        return new UserDto{
-            UserName = user.UserName,
-            Token = tokenService.CreateToken(user)
-        };
+        // context.Users.Add(user);
+        // await context.SaveChangesAsync();
+        // return new UserDto{
+        //     UserName = user.UserName,
+        //     Token = tokenService.CreateToken(user)
+        // };
     }
 
     [HttpPost("login")]
