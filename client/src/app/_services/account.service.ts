@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { User } from '../_models/User';
 import { map } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AccountService {
 
   private http = inject(HttpClient);
 
-  baseUrl = 'https://localhost:5001/api/'; //My backend URL
+  baseUrl = environment.apiUrl; //My backend URL
 
   currentUser = signal<User | null>(null) // initial value (null)
 
@@ -24,7 +25,7 @@ export class AccountService {
       })
     )
   }
-  
+
 
   logout(){
     localStorage.removeItem('user');

@@ -268,12 +268,15 @@ mkcert localhost
 ```bash
 ng g interceptor [name]
 ```
+- Example interceptor
+```bash
+ng g interceptor _interceptors/error --skip-tests
+```
 
 - Create commands help ng
 ```bash
 ng generate --help
 ```
-
 - create component help
 ```bash
 ng generate component --help
@@ -286,3 +289,12 @@ ng generate component nav --dry-run
 ```bash
 ng generate component nav --skip-tests --dry-run
 ```
+- Example Create a Service --skip-tests option
+```bash
+ng g s _services/members --skip-tests
+```
+- Create a Enviroment like a .env 
+```bash
+ng g environments
+```
+
