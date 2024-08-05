@@ -179,6 +179,11 @@ dotnet ef database -h
 dotnet ef database update
 ```
 
+- To delete/drop database
+```bash
+dotnet ef database drop
+```
+
 - To uninstall dotnet-ef.
 ```bash
 dotnet tool uninstall --global dotnet-ef
