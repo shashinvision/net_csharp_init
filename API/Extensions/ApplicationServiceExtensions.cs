@@ -26,6 +26,7 @@ public static class ApplicationServiceExtensions
 
         services.AddScoped<ITokenService, TokenService>(); // I Just need <TokenService> but is more declarative use <ITokenService, TokenService>
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         return services;
 

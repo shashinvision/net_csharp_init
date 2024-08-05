@@ -19,7 +19,7 @@ public class AppUser
     public required string Gender { get; set; }
     public required string? Introduction { get; set; }
     public required string? LookingFor { get; set; }
-    public required string ?Interests { get; set; }
+    public required string? Interests { get; set; }
     public required string City { get; set; }
     public required string Country { get; set; }
     public List<Photo> Photos { get; set; } = [];
