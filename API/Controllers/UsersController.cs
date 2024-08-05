@@ -12,7 +12,7 @@ namespace API.Controllers;
 // [Route("api/[controller]")] // /api/users
 
 [Authorize] // Use when you need authentication, need to be on the top of the controller or on the method
-public class UsersController(IUserRepository userRepository, IMapper mapper) : BaseApiController // extend of BaseApiController for reutilizable code
+public class UsersController(IUserRepository userRepository) : BaseApiController // extend of BaseApiController for reutilizable code
 {
     // [AllowAnonymous]
     [HttpGet]
@@ -21,11 +21,8 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
         // var users = await context.Users.ToListAsync();
         // return users;
 
-        var users = await userRepository.GetUsersAsync();
-
-        var usersToReturn = mapper.Map<IEnumerable<MemberDTO>>(users);
-
-        return Ok(usersToReturn);
+        var users = await userRepository.GetMembersAsync();
+        return Ok(users);
     }
 
     // [Authorize]
@@ -35,12 +32,11 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
     public async Task<ActionResult<MemberDTO>> GetUser(string username)
     {
         // var user = await context.Users.FindAsync(id);
-        var user = await userRepository.GetUserByUsernameAsync(username);
+        var user = await userRepository.GetMemberAsync(username);
         if (user == null) return NotFound();
 
-        var userToReturn = mapper.Map<MemberDTO>(user);
         
-        return userToReturn;
+        return user;
     }
 
     // [HttpGet]
