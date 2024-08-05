@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions;
 
-public static class AppicationServiceExtensions
+public static class ApplicationServiceExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
     {
@@ -25,7 +25,7 @@ public static class AppicationServiceExtensions
         services.AddCors();
 
         services.AddScoped<ITokenService, TokenService>(); // I Just need <TokenService> but is more declarative use <ITokenService, TokenService>
-
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
 
