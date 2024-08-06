@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 import { Member } from '../../_models/Member';
 import { RouterLink } from '@angular/router';
 
@@ -7,7 +7,8 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './member-card.component.html',
-  styleUrl: './member-card.component.css'
+  styleUrl: './member-card.component.css',
+  // encapsulation: ViewEncapsulation.Emulated,
 })
 export class MemberCardComponent {
 
