@@ -52,4 +52,8 @@ export class MemberEditComponent implements OnInit {
 
   }
 
+  onMemberchange(member: Member) {
+    this.member = member
+  }
+
 }
