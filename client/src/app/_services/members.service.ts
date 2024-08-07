@@ -23,6 +23,11 @@ export class MembersService {
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
+  updateMember(member: Member) {
+    // return this.http.put(this.baseUrl + 'users', member, this.getHttpOptions());
+    return this.http.put(this.baseUrl + 'users', member);
+  }
+
   // getHttpOptions() {
   //   return {
   //     headers: new HttpHeaders({
