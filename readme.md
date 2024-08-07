@@ -23,6 +23,8 @@ dotnet run
 # Run the project and watch for file changes. This command runs the project and automatically restarts it if any source files are modified, which is useful for development and debugging.
 
 dotnet watch
+# Or watch --no-hot-reload
+dotnet watch --no-hot-reload
 ```
 ### Commands
 
@@ -296,5 +298,9 @@ ng g s _services/members --skip-tests
 - Create a Enviroment like a .env 
 ```bash
 ng g environments
+```
+- Watch with no hot reaload
+```bash
+ dotnet watch --no-hot-reload
 ```
 
