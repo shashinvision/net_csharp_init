@@ -41,6 +41,11 @@ export class MembersService {
     );
   }
 
+  setMainPhoto(photoId: number) {
+    // return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {}, this.getHttpOptions());
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
+  }
+
   // getHttpOptions() {
   //   return {
   //     headers: new HttpHeaders({
