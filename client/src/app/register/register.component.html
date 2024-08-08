@@ -4,19 +4,25 @@
   <hr>
   <div class="mb-3 form-floating">
     <!-- <input type="text" name="username" [(ngModel)]="model.username" class="form-control" placeholder="Username"> -->
-    <input type="text" name="username" formControlName="username" class="form-control" placeholder="Username">
+    <input [class.is-invalid]="registerForm.get('username')?.errors && registerForm.get('username')?.touched" type="text" name="username" formControlName="username" class="form-control" placeholder="Username">
     <label for="username">Username</label>
+    <div class="invalid-feedback text-start">Please enter a username</div>
   </div>
 
   <div class="mb-3 form-floating">
     <!-- <input type="password" name="password" [(ngModel)]="model.password" class="form-control" placeholder="password"> -->
-    <input type="password" name="password" formControlName="password"  class="form-control" placeholder="password">
+    <input [class.is-invalid]="registerForm.get('password')?.errors && registerForm.get('password')?.touched"  type="password" name="password" formControlName="password"  class="form-control" placeholder="password">
     <label for="password">Password</label>
+    <div class="invalid-feedback text-start" *ngIf="registerForm.get('password')?.hasError('required')" >Please enter a password</div>
+    <div class="invalid-feedback text-start" *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 4 characters</div>
+    <div class="invalid-feedback text-start" *ngIf="registerForm.get('password')?.hasError('maxlength')">Password cannot exceed 8 characters</div>
   </div>
 
   <div class="mb-3 form-floating">
-    <input type="password" name="confirmPassword" formControlName="confirmPassword"  class="form-control" placeholder="Confirm password">
+    <input [class.is-invalid]="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched" type="password" name="confirmPassword" formControlName="confirmPassword"  class="form-control" placeholder="Confirm password">
     <label for="confirmPassword">Confirm Password</label>
+    <div class="invalid-feedback text-start" *ngIf="registerForm.get('confirmPassword')?.hasError('required')" >Please enter a password</div>
+    <div class="invalid-feedback text-start" *ngIf="registerForm.get('confirmPassword')?.hasError('isMatching')" >Passwords must match</div>
   </div>
 
 
