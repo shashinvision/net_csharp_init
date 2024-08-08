@@ -1,14 +1,22 @@
-<form #registerForm="ngForm" (ngSubmit)="register()" class="" autocomplete="off">
+<!-- <form #registerForm="ngForm" (ngSubmit)="register()" class="" autocomplete="off"> -->
+<form [formGroup]="registerForm" (ngSubmit)="register()" class="" autocomplete="off">
   <h2 class="text-center text-primary">Sign up</h2>
   <hr>
   <div class="mb-3 form-floating">
-    <input type="text" name="username" [(ngModel)]="model.username" class="form-control" placeholder="Username">
+    <!-- <input type="text" name="username" [(ngModel)]="model.username" class="form-control" placeholder="Username"> -->
+    <input type="text" name="username" formControlName="username" class="form-control" placeholder="Username">
     <label for="username">Username</label>
   </div>
 
   <div class="mb-3 form-floating">
-    <input type="password" name="password" [(ngModel)]="model.password" class="form-control" placeholder="password">
+    <!-- <input type="password" name="password" [(ngModel)]="model.password" class="form-control" placeholder="password"> -->
+    <input type="password" name="password" formControlName="password"  class="form-control" placeholder="password">
     <label for="password">Password</label>
+  </div>
+
+  <div class="mb-3 form-floating">
+    <input type="password" name="confirmPassword" formControlName="confirmPassword"  class="form-control" placeholder="Confirm password">
+    <label for="confirmPassword">Confirm Password</label>
   </div>
 
 
@@ -28,3 +36,9 @@
     <button class="btn btn-danger me-2" type="button" (click)="cancel()">Cancel</button>
   </div>
 </form>
+
+<!-- NOTE: TEST Values  -->
+<!-- <p>Form Value: {{registerForm.value | json}}</p>
+<p>Form status: {{registerForm.status| json}}</p> -->
+
+
