@@ -2,7 +2,7 @@ import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { AccountService } from './../_services/account.service';
 import { Component, input, output, EventEmitter, Output, Input, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { TextInputComponent } from "../_forms/text-input/text-input.component";
 import { DatePickerComponent } from "../_forms/date-picker/date-picker.component";
 import { Router } from '@angular/router';
@@ -17,13 +17,12 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   private accountService = inject(AccountService)
   private fb = inject(FormBuilder)
-  private toastr = inject(ToastrService)
+  // private toastr = inject(ToastrService)
   private router = inject(Router)
   // @Input() usersFormHomeComponent: any; // All of this we can be used
   // usersFormHomeComponent = input.required<any>()
   // @Output() cancelRegister = new EventEmitter(); // All of this we can be used
   cancelRegister = output<boolean>()
-  model: any = {}
   registerForm: FormGroup = new FormGroup({});
   maxDate = new Date();
   validationErrors: string[] | undefined;
@@ -60,8 +59,8 @@ export class RegisterComponent implements OnInit {
     // console.log(this.registerForm?.value)
     // console.log(this.model)
     const dob = this.getDateOnly(this.registerForm.get('dateOfBirth')?.value);
-    this.registerForm.controls['dateOfBirth'].setValue(dob);
-    this.accountService.register(this.model).subscribe({
+    this.registerForm.patchValue({dateOfBirth: dob})
+    this.accountService.register(this.registerForm.value).subscribe({
       next: () => this.router.navigateByUrl('/members'),
       error: error => this.validationErrors = error
     })
@@ -73,7 +72,6 @@ export class RegisterComponent implements OnInit {
 
   private getDateOnly(dob: string | undefined){
     if(!dob) return;
-    let theDob = new Date(dob);
-    return new Date(dob).toString().slice(0, 10);
+    return new Date(dob).toISOString().slice(0, 10);
   }
 }

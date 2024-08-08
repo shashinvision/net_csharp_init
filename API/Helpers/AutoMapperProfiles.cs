@@ -10,12 +10,12 @@ public class AutoMapperProfiles : Profile
     public AutoMapperProfiles()
     {
         CreateMap<AppUser, MemberDTO>()
-            .ForMember(d => d.age, o => o.MapFrom(s => s.DateOfBirth.CalculateAge())) // You could also use DateTimeExtensions.CalculateAge(s.DateOfBirth)
-            .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain)!.Url));
-            
+            .ForMember(d => d.age, o => o.MapFrom(s => s.DateOfBirth.CalculateAge()))
+            .ForMember(d => d.PhotoUrl, o => 
+                o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain)!.Url));
         CreateMap<Photo, PhotoDto>();
-        CreateMap<MemberUpdateDto, AppUser>(); // <source, destination>
+        CreateMap<MemberUpdateDto, AppUser>();
         CreateMap<RegisterDto, AppUser>();
-        CreateMap<string, DateOnly>().ConvertUsing(s => DateOnly.Parse(s)); // <source, destination>
+        CreateMap<string, DateOnly>().ConvertUsing(s => DateOnly.Parse(s));
     }
 }
