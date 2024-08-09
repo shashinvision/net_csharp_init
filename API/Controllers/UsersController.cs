@@ -24,7 +24,7 @@ public class UsersController(IUserRepository userRepository, IMapper mapper, IPh
     {
         // var users = await context.Users.ToListAsync();
         // return users;
-
+        userParams.CurrentUsername = User.GetUserName();
         var users = await userRepository.GetMembersAsync(userParams);
         Response.AddPaginationHeader(users);
         return Ok(users);
