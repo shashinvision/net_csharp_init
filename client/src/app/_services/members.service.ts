@@ -6,6 +6,7 @@ import { of, tap } from 'rxjs';
 import { Photo } from '../_models/Photo';
 import { PaginatedResult } from '../_models/Pagination';
 // import { AccountService } from './account.service';
+import { UserParams } from '../_models/UserParams';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +19,13 @@ export class MembersService {
   // members = signal<Member[]>([])
   paginatedResult = signal<PaginatedResult<Member[]> | null>(null)
 
-  getMembers(pageNumber?: number, pageSize?: number) {
+  getMembers(userParams: UserParams) {
+    let params = this.setPaginationHeaders(userParams.pageNumber, userParams.pageSize);
 
-    let params = new HttpParams();
+    params = params.append('minAge', userParams.minAge);
+    params = params.append('maxAge', userParams.maxAge);
+    params = params.append('gender', userParams.gender);
 
-    if(pageNumber && pageSize) {
-      params = params.append('pageNumber', pageNumber)
-      params = params.append('pageSize', pageSize)
-    }
     // return this.http.get<Member[]>(this.baseUrl + 'users', this.getHttpOptions());
     // next: members => this.members.set(members)
     return this.http.get<Member[]>(this.baseUrl + 'users', {observe: 'response', params}).subscribe({
@@ -36,6 +36,17 @@ export class MembersService {
         })
       }
     });
+  }
+
+  private setPaginationHeaders(pageNumber: number, pageSize: number) {
+    let params = new HttpParams();
+
+    if(pageNumber && pageSize) {
+      params = params.append('pageNumber', pageNumber)
+      params = params.append('pageSize', pageSize)
+    }
+
+    return params;
   }
 
   getMember(username: string) {
